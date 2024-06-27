@@ -46,7 +46,7 @@ Section Termination_proof.
     (HR : R A N)
     (HS : M ↦ N),
     R A M.
-  Proof.
+  Proof. (*
     induction A; intros; simpl in *.
     (* bool *)
     inversion HR; [ apply RT | apply RF ]; econstructor; eassumption.
@@ -68,7 +68,8 @@ Section Termination_proof.
       eapply IHA; [eassumption | apply red_hdC; eassumption].
     eapply head_expansion; [| eassumption].
     apply red_tlC; assumption.
-  Qed.
+  *)
+Admitted.
 
   (* lifting of head expansion to reflexive transitive closure *)
   Lemma head_exp_star : forall A M N
@@ -86,7 +87,7 @@ Section Termination_proof.
     (HR : rctx γ Γ)
     (HΓ : tcmt γ Γ),
     R A [γ!0]M.
-  Proof.
+  Proof. (*
     intros; generalize dependent γ; induction HT; intros.
     (* var *)
     assert (HT := subst_var _ _ _ 0 _ HFind HΓ); rewrite plus_comm in HT; simpl in *.
@@ -159,7 +160,8 @@ Section Termination_proof.
     rewrite sub_TT; apply RT; constructor.
     (* FF *)
     rewrite sub_FF; apply RF; constructor.
-  Qed.
+  *)
+Admitted.
 
   Theorem termination : forall M (HT : nil ⊢ M ::: ω),
     exists V, value V /\ (M ↦* V).

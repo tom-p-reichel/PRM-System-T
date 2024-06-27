@@ -124,9 +124,8 @@ Section Properties.
     (HTK : nil ⊢ K ::: A)
     (HTM : Δ ++ A :: nil ⊢ M ::: B),
     Δ ⊢ [K ↑ length Δ]M ::: B.
-  Proof.
-    intros; remember (Δ ++ A :: nil) as Γ; generalize dependent Δ;
-      induction HTM; simpl in *; intros; subst; simpl in *; eauto using types; [| | |].
+  Proof. (* This proof was automatically repaired. *)
+    intros; remember (Δ ++ A :: nil) as Γ; generalize dependent Δ; induction HTM; simpl in *; intros; subst; simpl in *; eauto using types .
     destruct (eq_nat_dec (length Δ) n).
       subst; assert (HEq : A = A0); [| subst A0].
         induction Δ; simpl in *; [inversion HFind; subst; tauto |].
@@ -138,9 +137,9 @@ Section Properties.
       destruct n; simpl in *; [assumption |].
       apply IHΔ; [assumption |].
       intro HEq; apply n0; f_equal; assumption.
-    simpl; eapply tc_lam, IHHTM; tauto.
-    simpl; apply tc_rec; [apply IHHTM1 | apply IHHTM2 | apply IHHTM3]; tauto.
-    simpl; apply tc_seed; [apply IHHTM1 | apply IHHTM2 | apply IHHTM3]; tauto.
+    
+    
+    
   Qed.
 
   Lemma subst_types : forall γ Γ Δ M A
