@@ -525,7 +525,7 @@ Proof.
   destruct n; simpl in *; [inversion HFind; subst; clear HFind |].
     rewrite plus_comm; simpl; rewrite <- !subst_gt; simpl; auto with arith.
     destruct (eq_nat_dec n0 n0); tauto.
-  replace (n0 + S n) with (S n0 + n) by omega.
+  replace (n0 + S n) with (S n0 + n) by lia.
   eapply IHΓ with (n0 := S n0) in HFind; [| intuition eassumption].
   replace n0 with (length (@nil te) + n0) by reflexivity;
     erewrite <- !closed_sub with (Γ := nil); simpl;

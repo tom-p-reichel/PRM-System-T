@@ -4,7 +4,7 @@
 Require Export Relations.
 Require Export List.
 Require Export Substitution.
-Require Import Omega.
+Require Import Lia.
 
 Open Scope t_scope.
 Open Scope list_scope.
@@ -169,7 +169,7 @@ Section Properties.
       destruct n0; simpl; [auto with arith |].
       simpl in HFind; apply IHΓ in HFind; auto with arith.
     destruct (eq_nat_dec (length Γ + n) n0); [| reflexivity].
-    contradict e; omega.
+    contradict e; lia.
   Qed.
 
   Lemma subst_var : forall γ Γ n m A
